@@ -1,4 +1,5 @@
 # Háttérhatalom Kártyái Kártyajáték
+[![StyleCI](https://styleci.io/repos/58573887/shield)](https://styleci.io/repos/58573887)
 
 ## hatterhatalom/engine
 A Háttérhatalom Kártyái kártyajáték motorja.
