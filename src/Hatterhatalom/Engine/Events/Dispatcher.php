@@ -55,7 +55,7 @@ class Dispatcher
     }
 
     /**
-     * Fires an event
+     * Fires an event.
      *
      * @param string|object $event
      * @param mixed|null    $payload
@@ -69,8 +69,8 @@ class Dispatcher
 
         $listeners = $this->getListeners($event);
 
-        foreach ((array) $listeners as $listener) {
-            call_user_func_array($listener, (array) $payload);
+        foreach ((array)$listeners as $listener) {
+            call_user_func_array($listener, (array)$payload);
         }
     }
 
@@ -78,6 +78,7 @@ class Dispatcher
      * Gets the listeners listening to a specified event.
      *
      * @param string $event
+     *
      * @return null|array
      */
     protected function getListeners($event)
