@@ -1,6 +1,6 @@
 # Háttérhatalom Kártyái Kártyajáték
 [![StyleCI](https://styleci.io/repos/58573887/shield)](https://styleci.io/repos/58573887)
-[![Build Status](https://travis-ci.org/hatterhatalom/engine.svg?branch=master)](https://travis-ci.org/hatterhatalom/engine)
+[![Build Status](https://img.shields.io/travis/hatterhatalom/engine.svg?style=flat-square)](https://travis-ci.org/hatterhatalom/engine)
 
 ## hatterhatalom/engine
 A Háttérhatalom Kártyái kártyajáték motorja.
