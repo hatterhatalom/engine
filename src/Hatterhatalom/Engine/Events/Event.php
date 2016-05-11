@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: nxu
- * Date: 2016.05.11.
- * Time: 20:22
- */
 
 namespace Hatterhatalom\Engine\Events;
 

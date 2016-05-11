@@ -69,8 +69,8 @@ class Dispatcher
 
         $listeners = $this->getListeners($event);
 
-        foreach ((array)$listeners as $listener) {
-            call_user_func_array($listener, (array)$payload);
+        foreach ((array) $listeners as $listener) {
+            call_user_func_array($listener, (array) $payload);
         }
     }
 
@@ -83,7 +83,7 @@ class Dispatcher
     protected function getListeners($event)
     {
         if (!array_key_exists($event, $this->listeners)) {
-            return null;
+            return;
         }
 
         return $this->listeners[$event];
