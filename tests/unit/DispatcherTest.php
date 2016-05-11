@@ -1,7 +1,7 @@
 <?php
 
-use Hatterhatalom\Engine\Events\Dispatcher;
 use Hatterhatalom\Engine\Events\CardWasPlayedEvent;
+use Hatterhatalom\Engine\Events\Dispatcher;
 
 class DispatcherTest extends PHPUnit_Framework_TestCase
 {
@@ -16,7 +16,7 @@ class DispatcherTest extends PHPUnit_Framework_TestCase
         $dispatcher = new Dispatcher();
 
         $payloadValidator = function ($payload) {
-            return $payload == "mia is love";
+            return $payload == 'mia is love';
         };
 
         $listenerMock = Mockery::mock('stdClass')
@@ -26,10 +26,10 @@ class DispatcherTest extends PHPUnit_Framework_TestCase
 
         $dispatcher->subscribe(
             CardWasPlayedEvent::class,
-            array($listenerMock, 'callback')
+            [$listenerMock, 'callback']
         );
 
-        $dispatcher->fire(CardWasPlayedEvent::class, "mia is love");
+        $dispatcher->fire(CardWasPlayedEvent::class, 'mia is love');
     }
 
     public function test_if_event_listener_can_be_unregistered()
@@ -42,12 +42,12 @@ class DispatcherTest extends PHPUnit_Framework_TestCase
 
         $dispatcher->subscribe(
             CardWasPlayedEvent::class,
-            array($listenerMock, 'yetAnotherCallback')
+            [$listenerMock, 'yetAnotherCallback']
         );
 
         $dispatcher->unsubscribe(
             CardWasPlayedEvent::class,
-            array($listenerMock, 'yetAnotherCallback')
+            [$listenerMock, 'yetAnotherCallback']
         );
 
         $dispatcher->fire(CardWasPlayedEvent::class);
@@ -58,7 +58,7 @@ class DispatcherTest extends PHPUnit_Framework_TestCase
         $dispatcher = new Dispatcher();
 
         $payloadValidator = function ($payload) {
-            return $payload == "mia is god";
+            return $payload == 'mia is god';
         };
 
         $listenerMock = Mockery::mock('stdClass')
@@ -73,14 +73,14 @@ class DispatcherTest extends PHPUnit_Framework_TestCase
 
         $dispatcher->subscribe(
             CardWasPlayedEvent::class,
-            array($listenerMock, 'callback1')
+            [$listenerMock, 'callback1']
         );
 
         $dispatcher->subscribe(
             CardWasPlayedEvent::class,
-            array($anotherMock, 'callback2')
+            [$anotherMock, 'callback2']
         );
 
-        $dispatcher->fire(CardWasPlayedEvent::class, "mia is god");
+        $dispatcher->fire(CardWasPlayedEvent::class, 'mia is god');
     }
 }

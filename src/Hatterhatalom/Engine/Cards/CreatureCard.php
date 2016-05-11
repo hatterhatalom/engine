@@ -4,8 +4,6 @@ namespace Hatterhatalom\Engine\Cards;
 
 /**
  * Class CreatureCard represents a single creature card.
- *
- * @package Hatterhatalom\Engine\Cards
  */
 abstract class CreatureCard extends Card
 {

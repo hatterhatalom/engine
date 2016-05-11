@@ -10,7 +10,6 @@ namespace Hatterhatalom\Engine\Events;
 
 /**
  * Class Event represents an event dispatched by the Dispatcher.
- * @package Hatterhatalom\Engine\Events
  */
 abstract class Event
 {

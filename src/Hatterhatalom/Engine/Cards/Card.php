@@ -4,8 +4,6 @@ namespace Hatterhatalom\Engine\Cards;
 
 /**
  * Class Card represents a single card entity in the game.
- *
- * @package Hatterhatalom\Engine\Cards
  */
 abstract class Card
 {
