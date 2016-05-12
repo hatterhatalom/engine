@@ -7,8 +7,3 @@ php:
 before_script:
   - composer self-update
   - composer install -n
-  - composer require -n satooshi/php-coveralls:dev-master
-script:
-  - ./vendor/bin/phpunit --coverage-clover ./tests/logs/clover.xml
-after_script:
-  - php vendor/bin/coveralls -v
