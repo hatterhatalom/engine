@@ -1,7 +1,7 @@
 <?php
 
-use Hatterhatalom\Engine\Game;
 use Hatterhatalom\Engine\Events\CardWasPlayedEvent;
+use Hatterhatalom\Engine\Game;
 
 class GameTest extends PHPUnit_Framework_TestCase
 {
@@ -18,8 +18,8 @@ class GameTest extends PHPUnit_Framework_TestCase
             }
         );
 
-        $game->trigger(new CardWasPlayedEvent("mia is love"));
+        $game->trigger(new CardWasPlayedEvent('mia is love'));
 
-        $this->assertSame("mia is love", $testValue);
+        $this->assertSame('mia is love', $testValue);
     }
 }
