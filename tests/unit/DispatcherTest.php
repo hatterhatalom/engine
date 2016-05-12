@@ -83,4 +83,25 @@ class DispatcherTest extends PHPUnit_Framework_TestCase
 
         $dispatcher->fire(CardWasPlayedEvent::class, 'mia is god');
     }
+
+    public function test_if_event_can_be_fired_by_passing_an_event_object_instead_of_class_name()
+    {
+        $dispatcher = new Dispatcher();
+
+        $payloadValidator = function ($payload) {
+            return $payload == 'mia is love';
+        };
+
+        $listenerMock = Mockery::mock('stdClass')
+            ->shouldReceive('yetAnotherCallback')
+            ->with(Mockery::on($payloadValidator))
+            ->getMock();
+
+        $dispatcher->subscribe(
+            CardWasPlayedEvent::class,
+            [$listenerMock, 'yetAnotherCallback']
+        );
+
+        $dispatcher->fire(new CardWasPlayedEvent('mia is love'));
+    }
 }

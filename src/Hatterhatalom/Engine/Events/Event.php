@@ -13,4 +13,14 @@ abstract class Event
      * @var mixed
      */
     public $payload;
+
+    /**
+     * Event constructor.
+     *
+     * @param null|mixed $payload
+     */
+    public function __construct($payload = null)
+    {
+        $this->payload = $payload;
+    }
 }

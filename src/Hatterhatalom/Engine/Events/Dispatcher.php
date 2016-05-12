@@ -63,8 +63,8 @@ class Dispatcher
     public function fire($event, $payload = null)
     {
         if ($event instanceof Event) {
-            $event = get_class($event);
             $payload = $event->payload;
+            $event = get_class($event);
         }
 
         $listeners = $this->getListeners($event);
