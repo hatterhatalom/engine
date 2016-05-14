@@ -5,7 +5,7 @@ namespace Hatterhatalom\Engine\Events;
 /**
  * Class Event represents an event dispatched by the Dispatcher.
  */
-abstract class Event
+class Event
 {
     /**
      * The event payload.

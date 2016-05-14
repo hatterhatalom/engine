@@ -23,4 +23,14 @@ abstract class Card
     {
         return $this->cost;
     }
+
+    /**
+     * Sets the cost of the card to a given value.
+     *
+     * @param int $cost
+     */
+    public function setCost($cost)
+    {
+        $this->cost = $cost;
+    }
 }

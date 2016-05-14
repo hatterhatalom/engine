@@ -70,7 +70,7 @@ class Dispatcher
         $listeners = $this->getListeners($event);
 
         foreach ((array) $listeners as $listener) {
-            call_user_func_array($listener, (array) $payload);
+            call_user_func_array($listener, [$payload]);
         }
     }
 

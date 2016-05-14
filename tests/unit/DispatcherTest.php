@@ -1,6 +1,6 @@
 <?php
 
-use Hatterhatalom\Engine\Events\CardWasPlayedEvent;
+use Hatterhatalom\Engine\Events\CardEvents\CardWasPlayed;
 use Hatterhatalom\Engine\Events\Dispatcher;
 
 class DispatcherTest extends PHPUnit_Framework_TestCase
@@ -11,7 +11,8 @@ class DispatcherTest extends PHPUnit_Framework_TestCase
         Mockery::close();
     }
 
-    public function test_if_event_listener_is_registered_and_fired_with_proper_payload()
+    public function test_if_event_listener_is_registered_and_fired_with_proper_payload(
+    )
     {
         $dispatcher = new Dispatcher();
 
@@ -25,11 +26,12 @@ class DispatcherTest extends PHPUnit_Framework_TestCase
             ->getMock();
 
         $dispatcher->subscribe(
-            CardWasPlayedEvent::class,
+            \Hatterhatalom\Engine\Events\Event::class,
             [$listenerMock, 'callback']
         );
 
-        $dispatcher->fire(CardWasPlayedEvent::class, 'mia is love');
+        $dispatcher->fire(\Hatterhatalom\Engine\Events\Event::class,
+            'mia is love');
     }
 
     public function test_if_event_listener_can_be_unregistered()
@@ -41,19 +43,20 @@ class DispatcherTest extends PHPUnit_Framework_TestCase
             ->getMock();
 
         $dispatcher->subscribe(
-            CardWasPlayedEvent::class,
+            \Hatterhatalom\Engine\Events\Event::class,
             [$listenerMock, 'yetAnotherCallback']
         );
 
         $dispatcher->unsubscribe(
-            CardWasPlayedEvent::class,
+            \Hatterhatalom\Engine\Events\Event::class,
             [$listenerMock, 'yetAnotherCallback']
         );
 
-        $dispatcher->fire(CardWasPlayedEvent::class);
+        $dispatcher->fire(\Hatterhatalom\Engine\Events\Event::class);
     }
 
-    public function test_if_multiple_listeners_can_be_registered_to_the_same_event()
+    public function test_if_multiple_listeners_can_be_registered_to_the_same_event(
+    )
     {
         $dispatcher = new Dispatcher();
 
@@ -72,19 +75,23 @@ class DispatcherTest extends PHPUnit_Framework_TestCase
             ->getMock();
 
         $dispatcher->subscribe(
-            CardWasPlayedEvent::class,
+            CardWasPlayed::class,
             [$listenerMock, 'callback1']
         );
 
         $dispatcher->subscribe(
-            CardWasPlayedEvent::class,
+            CardWasPlayed::class,
             [$anotherMock, 'callback2']
         );
 
-        $dispatcher->fire(CardWasPlayedEvent::class, 'mia is god');
+        $dispatcher->fire(
+            \Hatterhatalom\Engine\Events\Event::class,
+            'mia is god'
+        );
     }
 
-    public function test_if_event_can_be_fired_by_passing_an_event_object_instead_of_class_name()
+    public function test_if_event_can_be_fired_by_passing_an_event_object_instead_of_class_name(
+    )
     {
         $dispatcher = new Dispatcher();
 
@@ -98,10 +105,10 @@ class DispatcherTest extends PHPUnit_Framework_TestCase
             ->getMock();
 
         $dispatcher->subscribe(
-            CardWasPlayedEvent::class,
+            \Hatterhatalom\Engine\Events\Event::class,
             [$listenerMock, 'yetAnotherCallback']
         );
 
-        $dispatcher->fire(new CardWasPlayedEvent('mia is love'));
+        $dispatcher->fire(new \Hatterhatalom\Engine\Events\Event('mia is love'));
     }
 }
