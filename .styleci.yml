@@ -1,0 +1,7 @@
+preset: recommended
+
+finder:
+  exclude:
+    - "tests"
+  name:
+    - "*.php"

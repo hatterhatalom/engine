@@ -27,6 +27,13 @@ class Game
     protected $currentPlayerKey;
 
     /**
+     * The board where the cards are being kept.
+     *
+     * @var
+     */
+    protected $board;
+
+    /**
      * The players of the game.
      *
      * @var Player[]
@@ -52,6 +59,18 @@ class Game
         // Initialize dispatcher
         $dispatcher = $dispatcher ?: new Dispatcher();
         $this->dispatcher = $dispatcher;
+
+        $this->board = new Board();
+    }
+
+    /**
+     * Gets the board where the cards are located at.
+     *
+     * @return Board
+     */
+    public function board()
+    {
+        return $this->board;
     }
 
     /**
@@ -69,10 +88,27 @@ class Game
      *
      * @param string|mixed   $event
      * @param callable|array $listener
+     *
+     * @return $this
      */
     public function on($event, $listener)
     {
         $this->dispatcher->subscribe($event, $listener);
+
+        return $this;
+    }
+
+    /**
+     * Alias of the on method.
+     *
+     * @param mixed $event
+     * @param mixed $listener
+     *
+     * @return $this
+     */
+    public function when($event, $listener)
+    {
+        return $this->on($event, $listener);
     }
 
     /**
@@ -80,10 +116,14 @@ class Game
      *
      * @param Event|string $event
      * @param mixed|null   $payload
+     *
+     * @return $this
      */
     public function trigger($event, $payload = null)
     {
-        return $this->dispatcher->fire($event, $payload);
+        $this->dispatcher->fire($event, $payload);
+
+        return $this;
     }
 
     /**

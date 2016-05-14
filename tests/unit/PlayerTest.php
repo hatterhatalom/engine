@@ -1,6 +1,8 @@
 <?php
 
 use Hatterhatalom\Engine\Cards\Card;
+use Hatterhatalom\Engine\Events\PlayerEvents\PlayerDied;
+use Hatterhatalom\Engine\Events\PlayerEvents\PlayerIsBeingKilled;
 use Hatterhatalom\Engine\Events\PlayerEvents\PlayerIsBeingHealed;
 use Hatterhatalom\Engine\Events\PlayerEvents\PlayerIsTakingDamage;
 use Hatterhatalom\Engine\Player;
@@ -12,9 +14,11 @@ class PlayerTest extends PHPUnit_Framework_TestCase
         $card = Mockery::mock(Card::class);
 
         $player = new Player(new \Hatterhatalom\Engine\Game());
-        $player->cards()->push($card);
+        $player->cards()
+            ->push($card);
 
-        $this->assertSame($card, $player->cards()->pop());
+        $this->assertSame($card, $player->cards()
+            ->pop());
     }
 
     public function test_if_card_references_are_being_kept()
@@ -22,12 +26,16 @@ class PlayerTest extends PHPUnit_Framework_TestCase
         $card = Mockery::mock(Card::class);
 
         $player = new Player(new \Hatterhatalom\Engine\Game());
-        $player->cards()->push($card);
+        $player->cards()
+            ->push($card);
 
-        $this->assertSame($card, $player->cards()->first());
-        $this->assertSame($card, $player->cards()->filter(function () {
-            return true;
-        })->first());
+        $this->assertSame($card, $player->cards()
+            ->first());
+        $this->assertSame($card, $player->cards()
+            ->filter(function () {
+                return true;
+            })
+            ->first());
     }
 
     public function test_if_can_be_damaged_and_damage_can_be_modified()
@@ -85,7 +93,92 @@ class PlayerTest extends PHPUnit_Framework_TestCase
         $game = new \Hatterhatalom\Engine\Game();
         $player = new Player($game, 20);
 
+        $isDead = false;
+
         $player->heal(20);
         $this->assertEquals(20, $player->getHealth());
+
+        $game->on(
+            PlayerDied::class,
+            function ($deadPlayer) use (&$isDead, $player) {
+                if ($player === $deadPlayer) {
+                    $isDead = true;
+                }
+            }
+        );
+
+        $player->kill();
+
+        $this->assertTrue($isDead);
+    }
+
+    public function test_if_player_can_die()
+    {
+        $game = new \Hatterhatalom\Engine\Game();
+        $player = new Player($game);
+
+        $isDead = false;
+
+        $game->on(
+            PlayerDied::class,
+            function ($deadPlayer) use (&$isDead, $player) {
+                if ($player === $deadPlayer) {
+                    $isDead = true;
+                }
+            }
+        );
+
+        $player->kill();
+
+        $this->assertTrue($isDead);
+    }
+
+    public function test_if_player_death_can_be_prevented()
+    {
+        $game = new \Hatterhatalom\Engine\Game();
+        $player = new Player($game);
+
+        $isDead = false;
+
+        $game->on(
+            PlayerIsBeingKilled::class,
+            function ($death) {
+                $death->shouldHappen = false;
+            }
+        );
+
+        $game->on(
+            PlayerDied::class,
+            function ($deadPlayer) use (&$isDead, $player) {
+                if ($player === $deadPlayer) {
+                    $isDead = true;
+                }
+            }
+        );
+
+        $player->kill();
+
+        $this->assertFalse($isDead);
+    }
+
+    public function test_if_player_dies_when_health_reaches_zero()
+    {
+        $game = new \Hatterhatalom\Engine\Game();
+        $player = new Player($game, 10);
+
+        $isDead = false;
+
+        $game->on(
+            PlayerDied::class,
+            function ($deadPlayer) use (&$isDead, $player) {
+                if ($player === $deadPlayer) {
+                    $isDead = true;
+                }
+            }
+        );
+
+        $player->damage(10);
+
+        $this->assertTrue($isDead);
     }
 }

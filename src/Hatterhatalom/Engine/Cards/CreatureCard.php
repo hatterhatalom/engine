@@ -12,21 +12,21 @@ abstract class CreatureCard extends Card
      *
      * @var int
      */
-    protected $attackPoints;
+    protected $attackPoints = 0;
 
     /**
      * Defense points of the creature.
      *
      * @var int
      */
-    protected $defensePoints;
+    protected $defensePoints = 0;
 
     /**
      * Gets the attack points of the creature.
      *
      * @return int
      */
-    public function getAttackPoints()
+    public function attackPoints()
     {
         return $this->attackPoints;
     }
@@ -36,8 +36,28 @@ abstract class CreatureCard extends Card
      *
      * @return int
      */
-    public function getDefensePoints()
+    public function defensePoints()
     {
         return $this->defensePoints;
+    }
+
+    /**
+     * Sets the attack points of the card to a given value.
+     *
+     * @param int $attack
+     */
+    public function setAttackPoints($attack)
+    {
+        $this->attackPoints = $attack;
+    }
+
+    /**
+     * Sets the defense points of the card to a given value.
+     *
+     * @param int $defense
+     */
+    public function setDefensePoints($defense)
+    {
+        $this->defensePoints = $defense;
     }
 }

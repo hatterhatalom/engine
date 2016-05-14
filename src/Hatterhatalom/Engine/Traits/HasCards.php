@@ -2,10 +2,11 @@
 
 namespace Hatterhatalom\Engine\Traits;
 
+use Hatterhatalom\Engine\Cards\Card;
 use Hatterhatalom\Engine\Cards\CardCollection;
 
 /**
- * Trait HasCards is a basic implementation of the CanHaveCards interface.
+ * Trait HasCards is a basic implementation of the CardLocation interface.
  */
 trait HasCards
 {
@@ -28,5 +29,15 @@ trait HasCards
         }
 
         return $this->cardCollection;
+    }
+
+    /**
+     * Adds a card to the location.
+     *
+     * @param Card $card
+     */
+    public function addCard(Card $card)
+    {
+        $this->cards()->push($card);
     }
 }
