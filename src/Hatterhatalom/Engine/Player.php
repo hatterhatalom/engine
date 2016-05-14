@@ -17,8 +17,7 @@ use Hatterhatalom\Engine\Traits\HasCards;
 /**
  * Class Player represents a player of the game.
  */
-class Player implements
-    CardLocation
+class Player implements CardLocation
 {
     use HasCards {
         addCard as traitAddCard;

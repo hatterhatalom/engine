@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: nxu
- * Date: 2016.05.14.
- * Time: 17:58
- */
 
 namespace Hatterhatalom\Engine\Contracts;
 
@@ -21,7 +15,7 @@ interface CardLocation
     public function cards();
 
     /**
-     * Adds a card to the location
+     * Adds a card to the location.
      *
      * @param Card $card
      */
