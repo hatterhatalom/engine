@@ -8,7 +8,7 @@ use Hatterhatalom\Engine\Cards\CardCollection;
 interface CardLocation
 {
     /**
-     * Gets the card located in the location
+     * Gets the card located in the location.
      *
      * @return CardCollection
      */
