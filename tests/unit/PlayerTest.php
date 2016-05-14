@@ -68,7 +68,6 @@ class PlayerTest extends PHPUnit_Framework_TestCase
         $player->heal(10);
 
         $this->assertEquals(14, $player->getHealth());
-
     }
 
     public function test_if_negative_heal_has_no_effect()
