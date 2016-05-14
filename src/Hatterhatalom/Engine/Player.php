@@ -94,7 +94,7 @@ class Player implements CanHaveCards
     }
 
     /**
-     * Heals the player
+     * Heals the player.
      *
      * @param $health
      */

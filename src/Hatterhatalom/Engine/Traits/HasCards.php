@@ -1,4 +1,5 @@
 <?php
+
 namespace Hatterhatalom\Engine\Traits;
 
 use Hatterhatalom\Engine\Cards\CardCollection;

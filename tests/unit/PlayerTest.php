@@ -1,8 +1,8 @@
 <?php
 
 use Hatterhatalom\Engine\Cards\Card;
-use Hatterhatalom\Engine\Events\PlayerEvents\PlayerIsTakingDamage;
 use Hatterhatalom\Engine\Events\PlayerEvents\PlayerIsBeingHealed;
+use Hatterhatalom\Engine\Events\PlayerEvents\PlayerIsTakingDamage;
 use Hatterhatalom\Engine\Player;
 
 class PlayerTest extends PHPUnit_Framework_TestCase

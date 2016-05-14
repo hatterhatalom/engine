@@ -4,9 +4,6 @@ namespace Hatterhatalom\Engine\Events\Arguments;
 
 use Hatterhatalom\Engine\Player;
 
-/**
- * Class Turn
- */
 class Turn
 {
     /**

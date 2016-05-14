@@ -11,8 +11,7 @@ class DispatcherTest extends PHPUnit_Framework_TestCase
         Mockery::close();
     }
 
-    public function test_if_event_listener_is_registered_and_fired_with_proper_payload(
-    )
+    public function test_if_event_listener_is_registered_and_fired_with_proper_payload()
     {
         $dispatcher = new Dispatcher();
 
@@ -55,8 +54,7 @@ class DispatcherTest extends PHPUnit_Framework_TestCase
         $dispatcher->fire(\Hatterhatalom\Engine\Events\Event::class);
     }
 
-    public function test_if_multiple_listeners_can_be_registered_to_the_same_event(
-    )
+    public function test_if_multiple_listeners_can_be_registered_to_the_same_event()
     {
         $dispatcher = new Dispatcher();
 
@@ -90,8 +88,7 @@ class DispatcherTest extends PHPUnit_Framework_TestCase
         );
     }
 
-    public function test_if_event_can_be_fired_by_passing_an_event_object_instead_of_class_name(
-    )
+    public function test_if_event_can_be_fired_by_passing_an_event_object_instead_of_class_name()
     {
         $dispatcher = new Dispatcher();
 
