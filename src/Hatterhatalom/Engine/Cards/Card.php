@@ -66,8 +66,8 @@ abstract class Card
         if ($cardAction->shouldHappen) {
             $this->isInGame = true;
             $this->location = $this->owner()->game()->board();
-            $this->owner()->game()->trigger(new CardWasPlayed($this));
             $this->onPlayed();
+            $this->owner()->game()->trigger(new CardWasPlayed($this));
         }
 
         return $this;
