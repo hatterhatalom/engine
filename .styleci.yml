@@ -1,5 +1,7 @@
 preset: recommended
 
+risky: false
+
 finder:
   exclude:
     - "tests"
