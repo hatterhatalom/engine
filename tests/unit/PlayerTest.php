@@ -7,7 +7,7 @@ use Hatterhatalom\Engine\Events\PlayerEvents\PlayerIsBeingHealed;
 use Hatterhatalom\Engine\Events\PlayerEvents\PlayerIsTakingDamage;
 use Hatterhatalom\Engine\Player;
 
-class PlayerTest extends PHPUnit_Framework_TestCase
+class PlayerTest extends \PHPUnit\Framework\TestCase
 {
     public function test_if_can_store_and_return_a_card()
     {

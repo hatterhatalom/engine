@@ -3,9 +3,8 @@
 namespace Hatterhatalom\Engine\Events\PlayerEvents;
 
 use Hatterhatalom\Engine\Events\Arguments\PlayerHealthDifference;
-use Hatterhatalom\Engine\Events\Event;
 
-class PlayerTookDamage extends Event
+class PlayerTookDamage extends PlayerEvent
 {
     public function __construct(PlayerHealthDifference $payload)
     {

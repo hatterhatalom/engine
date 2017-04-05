@@ -3,7 +3,7 @@
 namespace Hatterhatalom\Engine\Events;
 
 /**
- * Class EventManager is the observable entity that is responsible for
+ * Class Dispatcher is the observable entity that is responsible for
  * managing event subscriptions and dispatchments.
  * Vastly inspired by Laravels event system implementation.
  */
@@ -84,7 +84,7 @@ class Dispatcher
     protected function getListeners($event)
     {
         if (!array_key_exists($event, $this->listeners)) {
-            return;
+            return null;
         }
 
         return $this->listeners[$event];

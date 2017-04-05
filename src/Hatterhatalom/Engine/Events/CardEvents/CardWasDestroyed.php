@@ -3,9 +3,8 @@
 namespace Hatterhatalom\Engine\Events\CardEvents;
 
 use Hatterhatalom\Engine\Cards\Card;
-use Hatterhatalom\Engine\Events\Event;
 
-class CardWasDestroyed extends Event
+class CardWasDestroyed extends CardEvent
 {
     public function __construct(Card $payload)
     {

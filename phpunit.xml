@@ -11,11 +11,12 @@
         stopOnSkipped="false"
         strict="false"
         verbose="false"
+        beStrictAboutTestsThatDoNotTestAnything="false"
         bootstrap="./vendor/autoload.php"
 >
 
     <testsuites>
-        <testsuite name="AllTests">
+        <testsuite name="All tests">
             <directory>./tests</directory>
         </testsuite>
     </testsuites>

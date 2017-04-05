@@ -3,7 +3,7 @@
 use Hatterhatalom\Engine\Events\CardEvents\CardWasPlayed;
 use Hatterhatalom\Engine\Events\Dispatcher;
 
-class DispatcherTest extends PHPUnit_Framework_TestCase
+class DispatcherTest extends \PHPUnit\Framework\TestCase
 {
     public function tearDown()
     {
@@ -29,8 +29,10 @@ class DispatcherTest extends PHPUnit_Framework_TestCase
             [$listenerMock, 'callback']
         );
 
-        $dispatcher->fire(\Hatterhatalom\Engine\Events\Event::class,
-            'mia is love');
+        $dispatcher->fire(
+            \Hatterhatalom\Engine\Events\Event::class,
+            'mia is love'
+        );
     }
 
     public function test_if_event_listener_can_be_unregistered()

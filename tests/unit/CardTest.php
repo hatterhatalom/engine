@@ -3,7 +3,7 @@ class SampleCard extends \Hatterhatalom\Engine\Cards\Card
 {
 }
 
-class CardTest extends PHPUnit_Framework_TestCase
+class CardTest extends \PHPUnit\Framework\TestCase
 {
     public function test_if_card_is_not_in_game_by_default()
     {

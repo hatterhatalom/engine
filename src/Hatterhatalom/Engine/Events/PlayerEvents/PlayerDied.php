@@ -2,10 +2,9 @@
 
 namespace Hatterhatalom\Engine\Events\PlayerEvents;
 
-use Hatterhatalom\Engine\Events\Event;
 use Hatterhatalom\Engine\Player;
 
-class PlayerDied extends Event
+class PlayerDied extends PlayerEvent
 {
     public function __construct(Player $payload)
     {

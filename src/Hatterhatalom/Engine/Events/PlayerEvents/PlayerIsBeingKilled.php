@@ -3,9 +3,8 @@
 namespace Hatterhatalom\Engine\Events\PlayerEvents;
 
 use Hatterhatalom\Engine\Events\Arguments\PlayerDeath;
-use Hatterhatalom\Engine\Events\Event;
 
-class PlayerIsBeingKilled extends Event
+class PlayerIsBeingKilled extends PlayerEvent
 {
     public function __construct(PlayerDeath $payload)
     {
